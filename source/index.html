@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preload" href="css/style.min.css?v=1.0.0" as="style">
+        <link href="css/style.min.css?v=1.0.0" rel="stylesheet">
+        <link rel="preload" href="fonts/OpenSans-Regular.woff2?v=1.0.0" as="font" crossorigin="anonymous">
+        <link rel="preload" href="fonts/OpenSans-SemiBold.woff2?v=1.0.0" as="font" crossorigin="anonymous">
+        <title>Чат</title>
+    </head>
+    <body>
+        <div class="chat">
+            <div class="chat__header">
+                <div class="chat__title">Задание: простой чат
+                    <span>Количество участников безгранично</span>
+                </div>
+                <input class="chat__settings-toggle visually-hidden" type="checkbox" id="settings">
+                <label class="chat__settings-label" for="settings"></label>
+                <div class="chat__menu">
+                    <label class="chat__menu-item">
+                        Уведомления
+                        <input class="visually-hidden" type="checkbox" id="notifications">
+                        <label for="notifications"></label>
+                    </label>
+                    <label class="chat__menu-item">
+                        Статус «В сети»
+                        <input class="visually-hidden" type="checkbox" id="online">
+                        <label for="online"></label>
+                    </label>
+                </div>
+            </div>
+            <div class="chat__body">
+                <!--<div class="chat__placeholder">-->
+                    <!--<p>Это пустое состояние чата<br> (данная заглушка из картинки и этого текста должна отображаться по центру зоны сообщений пользователей)</p>-->
+                <!--</div>-->
+                <div class="chat__message message">
+                    <div class="message__user-photo" style="background-image: url('img/001.jpg')"></div>
+                    <div class="message__title">Diana</div>
+                    <div class="message__text">
+                        <p>Сам чат состоит из трех частей:<br>
+                             - заголовка (его высота фиксирована), в котором указано название чата, количество участников и кнопка открытия списка настроек чата;<br>
+                             - зоны сообщений пользователей (зона сообщений занимает все свободное от заголовка и блока ввода сообщения место, здесь же и присутствует вертикальный скролл), в которой отображаются сообщения пользователей с указанием автора сообщения (аватарка и имя);<br>
+                             - блока ввода сообщений (который растет по мере количества строк в сообщении пользователя, но ограничен максимальной  высотой)</p>
+                    </div>
+                </div>
+                <div class="chat__message message">
+                    <div class="message__user-photo" style="background-image: url('img/002.jpg')"></div>
+                    <div class="message__title">Sergio</div>
+                    <div class="message__text">
+                        <p>Как вы уже поняли, на втором экране уже появляются сообщения и их может быть довольно много.</p>
+                        <p>Сообщения от одного и того же пользователя «слипаются» (чтобы занимать меньше места)</p>
+                    </div>
+                </div>
+                <div class="chat__message message">
+                    <div class="message__user-photo" style="background-image: url('img/003.jpg')"></div>
+                    <div class="message__title">Margo</div>
+                    <div class="message__text">
+                        <p>Данные макеты должны быть сверстаны таким образом, чтобы отображаться на любых экранах в полный размер (занимать всю ширину и высоту устройства)</p>
+                        <p>В этом состоянии отображен дропдаун с настройками. Он открывается по клику на иконку «три точки» и закрывается по клику на иконку «крестик» (которую визуально пользователь видит на том же месте).</p>
+                        <p>Внутри дропдауна два пункта настроек, каждый из которых представляет себя переключатель на 2 состояния.</p>
+                        <p>Напоминаем: никакого JS кода, реализовать требуется на чистом HTML+CSS. Анимирование интерфейсов не обязательно, но вы можете проявить себя =)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chat__footer">
+                <div contenteditable class="chat__textarea" data-placeholder="Сообщение..."></div>
+                <button class="chat__button"></button>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,241 @@
+.chat *,
+.chat *::before,
+.chat *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 300px;
+  height: 100vh;
+  background-color: $bg-primary-color;
+  color: $txt-primary-color;
+}
+
+.chat__header {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  height: 51px;
+}
+
+.chat__title {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
+  padding-left: 16px;
+  padding-bottom: 12px;
+  overflow: hidden;
+
+  @include font(13, 600);
+}
+
+.chat__title span {
+  color: $txt-secondary-color;
+
+  @include font(12, 400);
+}
+
+.chat__settings-label {
+  width: 55px;
+  height: 100%;
+  margin-left: auto; /*for IE11 (space-between)*/
+  background: url("../img/icon_settings.svg") no-repeat center calc(50% + 2px);
+  background-size: 22px 7px;
+  cursor: pointer;
+}
+
+.chat__settings-toggle:checked + .chat__settings-label {
+  background-image: url("../img/icon_settings-close.svg");
+  background-size: 22px 22px;
+}
+
+.chat__menu {
+  visibility: hidden;
+  position: absolute;
+  flex-direction: column;
+  top: 61px;
+  right: 10px;
+  width: 175px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px #000000;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  background: $bg-primary-color;
+
+  @include font(13, 400);
+}
+
+.chat__settings-toggle:checked ~ .chat__menu {
+  visibility: visible;
+  opacity: 1;
+}
+
+.chat__menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px 10px 16px;
+  cursor: pointer;
+}
+
+.chat__menu-item label {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: $controls-secondary-color;
+  transition: background-color 0.2s ease;
+}
+
+.chat__menu-item input:checked + label {
+  background-color: $controls-primary-color;
+}
+
+.chat__menu-item label::after {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 1px;
+  transform: translateY(-50%);
+  content: "";
+  border-radius: 100%;
+  background: $bg-primary-color;
+  transition: left 0.2s ease;
+}
+
+.chat__menu-item input:checked + label::after {
+  left: 13px;
+}
+
+.chat__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  max-width: 100%;
+  padding: 16px 16px 0;
+
+  border-top: $bg-secondary-color 1px solid;
+  border-bottom: $bg-secondary-color 1px solid;
+  overflow: auto;
+
+  @include scroll-style;
+}
+
+.chat__placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  flex-basis: 100%;
+  flex-grow: 1;
+  color: $txt-secondary-color;
+
+  @include font(13, 400);
+}
+
+.chat__placeholder p {
+  padding-top: 147px;
+  width: 300px;
+  text-align: center;
+  align-self: center;
+
+  background: url("../img/placeholder.svg") no-repeat top center;
+  background-size: 115px 115px;
+}
+
+.chat__message {
+  flex-shrink: 0; /*IE11*/
+}
+
+.chat__message + .chat__message { /*todo проверить на необходимость*/
+  margin-top: 10px;
+}
+
+.chat__footer {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.chat__textarea {
+  display: block;
+  width: 100%;
+  max-height: 164px;
+
+  margin: 0;
+  padding: 16px 0 12px 16px;
+
+  resize: none;
+  outline: none;
+  border: none;
+  color: $txt-primary-color;
+  line-height: 18px;
+
+  background-color: $bg-primary-color;
+  overflow: auto;
+  cursor: text;
+
+  @include scroll-style;
+  @include font(13, 400);
+}
+
+.chat__textarea:empty::before {
+  content: attr(data-placeholder);
+  color: $txt-secondary-color;
+}
+
+.chat__textarea:empty:focus::before {
+  opacity: 0.5;
+}
+
+.chat__button {
+  width: 55px;
+  height: 51px;
+  padding: 0;
+  align-self: flex-end;
+  flex-shrink: 0;
+  background: $bg-primary-color url("../img/icon_send.svg") no-repeat center center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.chat__button:hover {
+  animation: heartbeat 1.5s ease-in-out infinite both;
+}
+
+@keyframes heartbeat {
+  from {
+    transform: scale(1);
+    transform-origin: center center;
+    animation-timing-function: ease-out;
+  }
+
+  10% {
+    transform: scale(0.91);
+    animation-timing-function: ease-in;
+  }
+
+  17% {
+    transform: scale(0.98);
+    animation-timing-function: ease-out;
+  }
+
+  33% {
+    transform: scale(0.87);
+    animation-timing-function: ease-in;
+  }
+
+  45% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+}

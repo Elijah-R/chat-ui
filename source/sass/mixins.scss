@@ -1,0 +1,28 @@
+@mixin font($size, $weight) {
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-size: $size + px;
+  font-weight: $weight;
+}
+
+@mixin scroll-style {
+  scrollbar-arrow-color: $bg-secondary-color; /*IE11*/
+  scrollbar-face-color: $bg-secondary-color; /*IE11*/
+  scrollbar-highlight-color: $txt-secondary-color; /*IE11*/
+  scrollbar-shadow-color: $bg-secondary-color; /*IE11*/
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $txt-secondary-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $bg-secondary-color;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $scrollbar-thumb-hover-color;
+  }
+}
