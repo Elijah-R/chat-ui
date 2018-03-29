@@ -71,6 +71,10 @@
   @include font(13, 400);
 }
 
+.chat__menu label {
+  cursor: pointer;
+}
+
 .chat__settings-toggle:checked ~ .chat__menu {
   visibility: visible;
   opacity: 1;
@@ -80,7 +84,6 @@
   display: flex;
   justify-content: space-between;
   padding: 10px 10px 10px 16px;
-  cursor: pointer;
 }
 
 .chat__menu-item label {
